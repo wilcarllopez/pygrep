@@ -3,7 +3,7 @@ listdr.py is a script that will ask the user to provide regular expression to se
 and path you want to search the file.
 
 ## Usage
-To use the script, do the following. The user **MUST** provide an existing directory and a csv filename.
+To use the script, do the following. The user **MUST** provide the following <regular expression> <file pattern> <path>.
 ```python
 python grep.py <regular expression> <file pattern> <path>
 ```
