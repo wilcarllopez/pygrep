@@ -1,6 +1,7 @@
 import re
 import os
 import argparse
+import configparser
 
 def find_path(path, fpattern, regex):
     """Finding the directory of the pathname path"""
