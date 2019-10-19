@@ -1,7 +1,6 @@
 import re
 import os
 import argparse
-import configparser
 
 def find_path(path, fpattern, regex):
     """Finding the directory of the pathname path"""
@@ -45,18 +44,16 @@ def look_file(path, fpattern, regex):
             pass
 
 if __name__ == "__main__":
-    config = configparser.ConfigParser()
-    config.read('config.ini')
     parser = argparse.ArgumentParser()
     parser.add_argument('regex', help='Word/s or pattern/s to search')
     parser.add_argument('filepattern', help='File pattern of the file to search')
-    parser.add_argument('path', nargs="?", default=config['default']['path'], help='Path directory')
+    parser.add_argument('path', nargs="?", help='Path directory')
     parser.add_argument('-l','--linenumber', action='store_true', help='Shows line number where the pattern was found')
     parser.add_argument('-c', '--count', action='store_true', help='Counts the total occurence the pattern was shown')
     parser.add_argument('-r', '--recursive', action='store_true', help='Recursively search throughout the path provided')
     parser.add_argument('-i', '--ignorecase', action='store_true', help='Ignore case of the regular expression provided')
     args = parser.parse_args()
-    path = args.path
+    path = os.path.abspath(args.path)
 
     fpattern = args.filepattern
     if args.ignorecase:
